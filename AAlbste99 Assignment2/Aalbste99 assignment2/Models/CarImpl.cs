@@ -8,8 +8,8 @@ public class Carimpl : ICar, IDriveable
     {
         return "Driving the car";
     }
-    public string? Brand { get; set; } = string.Empty;//Bilens märke till exempel (Toyota)
-    public string? Model { get; set; } = string.Empty; //Bilens modell till exempel (Corolla) 
+    public string? Brand { get; set; } = string.Empty;//Bilens märke
+    public string? Model { get; set; } = string.Empty; //Bilens modell
     public int Year { get; set; } //Tillverkningsår för bilen
     public double Mileage { get; set; }  //Bilens antal körda mil
     public int Doors { get; set; }  //Bilens antal dörrar

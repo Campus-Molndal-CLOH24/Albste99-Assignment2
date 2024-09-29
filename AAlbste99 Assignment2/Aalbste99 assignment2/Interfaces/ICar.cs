@@ -3,7 +3,7 @@ using Vehicles;
 
 namespace Vehicles
 {
-    public interface ICar : IVehicle
+    public interface ICar : IVehicle // Interface som definierar bilen
     {
         int Doors { get; set; }
     }

@@ -3,9 +3,9 @@
 
 namespace Vehicles
 {
-    public class TruckFactory : IVehicleFactory
+    public class TruckFactory : IVehicleFactory  //TruckFactory implementerar IVehicleFactory och ansvarar för att skapa lastbilens objekt
     {
-        public IVehicle CreateVehicle(string brand, string model, int year, double mileage)
+        public IVehicle CreateVehicle(string brand, string model, int year, double mileage)  
         {
             return new TruckImpl
             {

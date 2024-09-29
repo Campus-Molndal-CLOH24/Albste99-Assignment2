@@ -7,35 +7,35 @@ namespace Vehicles
     {
         static void Main(string[] args)
         {
-            List<IDriveable> driveableVehicles = new List<IDriveable>();
+            List<IDriveable> driveableVehicles = new List<IDriveable>(); //Lista för att lagra alla fordon som implementerar IDriveable
 
             var carFactory = new CarFactory();
-            var motorcycleFactory = new MotorcycleFactory();
+            var motorcycleFactory = new MotorcycleFactory();  //Skapa fabriker för olika typer av fordon
             var TruckFactory = new TruckFactory();
 
-
+            //Skapar körbara bilar
             IDriveable car1 = (IDriveable)carFactory.CreateVehicle("Toyota" ,"Corolla", 2020, 15000);
             IDriveable car2 = (IDriveable)carFactory.CreateVehicle("Ford", "Fiestaa", 2021, 20000);
             IDriveable car3 = (IDriveable)carFactory.CreateVehicle("Honda", "Civic", 2022, 12000);
             IDriveable car4 = (IDriveable)carFactory.CreateVehicle("Mercedes", "A180", 2019, 18000);
             IDriveable car5 = (IDriveable)carFactory.CreateVehicle("Toyota", "Supra", 2023, 5000);
-
+            //Skapar körbara motorcyklar
             IDriveable motorcycle1 = (IDriveable)motorcycleFactory.CreateVehicle("Harley Davidson", "Sportster", 2019, 5000);
             IDriveable motorcycle2 = (IDriveable)motorcycleFactory.CreateVehicle("Kawasaki", "Z1000", 2020, 3000);
             IDriveable motorcycle3 = (IDriveable)motorcycleFactory.CreateVehicle("Harley Davidson", "V-Rod", 2018, 7000);
             IDriveable motorcycle4 = (IDriveable)motorcycleFactory.CreateVehicle("Kawasaki", "Ninja  ZX-6R", 2022, 4000);
             IDriveable motorcycle5 = (IDriveable)motorcycleFactory.CreateVehicle("Ducati", "Monster", 2023, 2000);
-
+            //Skapar körbara lastbilar
             IDriveable truck1 = (IDriveable)TruckFactory.CreateVehicle("Volvo", "FH16", 2021, 50000);
             IDriveable truck2 = (IDriveable)TruckFactory.CreateVehicle("Scania", "R500", 2019, 80000);
             IDriveable truck3 = (IDriveable)TruckFactory.CreateVehicle("Mercedes", "Actros", 2020, 60000);
-
+            //Lägger till dem i listan
             driveableVehicles.Add(car1);
             driveableVehicles.Add(car2);
             driveableVehicles.Add(car3);
             driveableVehicles.Add(car4);
             driveableVehicles.Add(car5);
-
+           
             driveableVehicles.Add(motorcycle1);
             driveableVehicles.Add(motorcycle2);
             driveableVehicles.Add(motorcycle3);
@@ -68,9 +68,9 @@ namespace Vehicles
             vehicles.Add(new MotorcycleFactory().CreateMotorcycle("Kawasaki", "Ninja  ZX-6R", 2022, 4000, "636CC"));
             vehicles.Add(new MotorcycleFactory().CreateMotorcycle("Ducati", "Monster", 2023, 2000, "L-Twin"));
 
-            vehicles.Add(new TruckFactory().CreateVehicle("Volvo", "FH16", 2021, 50000));
-            vehicles.Add(new TruckFactory().CreateVehicle("Scania", "R500", 2019, 80000));
-            vehicles.Add(new TruckFactory().CreateVehicle("Mercedes", "Actros", 2020, 60000));
+            vehicles.Add(new TruckFactory().CreateTruck("Volvo", "FH16", 2021, 50000, 20000));
+            vehicles.Add(new TruckFactory().CreateTruck("Scania", "R500", 2019, 80000, 18000));
+            vehicles.Add(new TruckFactory().CreateTruck("Mercedes", "Actros", 2020, 60000, 15000));
 
             //iterera över listan och anropa metoder beroende på fordonstyp
             foreach (var vehicle in vehicles)
@@ -97,7 +97,11 @@ namespace Vehicles
                 }
                 else if (vehicle is ITruck truck)
                 {
-                    Console.WriteLine($"Truck cargo capacoty: {truck.CargoCapacity} kg");
+                    truck.StartEngine();
+                    Console.WriteLine("Truck engine status: " + (truck.IsEngineOn() ? "On" : "Off"));
+                    truck.StopEngine();
+                    Console.WriteLine("Truck engine status: " + (truck.IsEngineOn() ? "On" : "Off"));
+                    Console.WriteLine($"Truck cargo capacity: {truck.CargoCapacity} kg");
                 }
             }
         }
